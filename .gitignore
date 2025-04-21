@@ -190,3 +190,8 @@ external/*
 data/*
 # 保留 data/.gitkeep
 !data/.gitkeep
+
+document
+
+models/*
+!models/.gitkeep
