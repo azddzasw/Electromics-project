@@ -19,6 +19,7 @@ tensorflow = "^2.19.0"
 #[tool.poetry.group.modelbuild.dependencies]
 pandas = "^2.2.2"
 modelseedpy = {path = "external/ModelSEEDpy"}
+jax = "^0.6.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
