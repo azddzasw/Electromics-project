@@ -46,9 +46,9 @@ def reconstruct_draft_model(model_id, faa_path, sbml_path, rast):
         )
 
         write_sbml_model(model, sbml_path)
-        print(f"✅ Model saved: {sbml_path}")
+        print(f" Model saved: {sbml_path}")
     except Exception as e:
-        print(f"❌ Failed to process {model_id}: {e}")
+        print(f"Failed to process {model_id}: {e}")
 
 # ---------- main ----------
 def main():
