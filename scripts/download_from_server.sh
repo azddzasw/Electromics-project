@@ -8,9 +8,9 @@ LOCAL_DIR="data/all_fna"
 
 # ==============================================
 
-echo "🛰️ start connecting to server $REMOTE_USER@$REMOTE_HOST..."
-echo "📂 download：$REMOTE_DIR"
-echo "💾 local position：$LOCAL_DIR"
+echo " start connecting to server $REMOTE_USER@$REMOTE_HOST..."
+echo " download：$REMOTE_DIR"
+echo " local position：$LOCAL_DIR"
 
 mkdir -p "$LOCAL_DIR"
 
