@@ -1,0 +1,13 @@
+model,num_added_reactions,added_reaction_ids
+MAG099_gapfilled_noO2.xml,7,rxn24523_c0;rxn14178_c0;rxn00250_c0;rxn08024_c0;rxn00677_c0;rxn03130_c0;EX_cpd00141_e0
+MAG018.sbml_gapfilled_noO2.xml,9,EX_cpd00012_e0;rxn31425_c0;rxn00148_c0;EX_cpd00141_e0;rxn09174_c0;rxn09095_c0;EX_cpd15543_e0;rxn01501_c0;rxn13699_c0
+MAG071_gapfilled_noO2.xml,4,EX_cpd00141_e0;rxn24523_c0;rxn45246_c0;rxn10213_c0
+MAG041_gapfilled_noO2.xml,5,rxn00985_c0;rxn14178_c0;EX_cpd00322_e0;rxn04794_c0;EX_cpd00141_e0
+MAG189_gapfilled_noO2.xml,3,rxn00677_c0;rxn14178_c0;EX_cpd00141_e0
+MAG010.sbml_gapfilled_noO2.xml,6,rxn00985_c0;rxn14178_c0;rxn09174_c0;rxn04794_c0;EX_cpd00141_e0;EX_cpd00149_e0
+MAG005.sbml_gapfilled_noO2.xml,4,rxn00677_c0;rxn04794_c0;EX_cpd00141_e0;rxn14178_c0
+MAG038_gapfilled_noO2.xml,3,rxn00677_c0;rxn14178_c0;EX_cpd00141_e0
+MAG070_gapfilled_noO2.xml,2,rxn00985_c0;EX_cpd00141_e0
+MAG106_gapfilled_noO2.xml,5,rxn00985_c0;rxn41859_c0;rxn00737_c0;EX_cpd00141_e0;EX_cpd00149_e0
+MAG214_gapfilled_noO2.xml,1,EX_cpd00141_e0
+MAG146_gapfilled_noO2.xml,1,EX_cpd00141_e0
