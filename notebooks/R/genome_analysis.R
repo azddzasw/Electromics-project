@@ -120,3 +120,59 @@ cor_df %>%
   theme_minimal() +
   labs(title = "Top negatively  MAGs",
        y = "Spearman correlation", x = "MAG ID")
+
+
+# -------- Wood-Ljungdahl Pathway check--------
+woodljungdahl_core_kos <- c(
+  "K00198",  # formate dehydrogenase
+  "K00600",  # formyl-THF synthetase
+  "K00297",  # methylene-THF dehydrogenase
+  "K01491",  # methylene-THF reductase
+  "K00194",  # CO dehydrogenase
+  "K00197"   # acetyl-CoA synthase
+)
+
+# MAGLab_Name 
+meta_df <- data.frame(
+  MAGLab_Name = c(
+    "R1J142A", "R2J142A", "R3J142A", "R4J147A", "R5J141A", "R6J143A",
+    "R4J147C", "R5J141C", "R6J143C",
+    "Sg1AJ36C", "Sg1BJ36C", "Sg1CJ36C",
+    "NSg1AJ41C", "NSg1BJ41C", "NSg1CJ41C"
+  ),
+  Compartment = c(
+    rep("Anode", 6),
+    rep("Cathode", 9)
+  ),
+  stringsAsFactors = FALSE
+)
+# build mag dict for anode/cathode
+sample_to_polarity <- setNames(meta_df$Compartment, meta_df$MAGLab_Name)
+build_mag_polarity_dict <- function(coverage_matrix) {
+  sapply(colnames(coverage_matrix), function(mag) {
+    samples_present <- rownames(coverage_matrix)[coverage_matrix[, mag] > 0]
+    polarities <- sample_to_polarity[samples_present]
+    polarities <- polarities[!is.na(polarities)]
+    if (length(polarities) == 0) return(NA)
+    return(names(which.max(table(polarities))))
+  })
+}
+
+kos_present <- intersect(woodljungdahl_core_kos, colnames(mag_ko_matrix))
+mag_has_all <- rowSums(mag_ko_matrix[, kos_present, drop = FALSE] > 0) == length(kos_present)
+mags_with_all <- rownames(mag_ko_matrix)[mag_has_all]
+
+# Get all cathode sample names
+cathode_samples <- names(sample_to_polarity)[sample_to_polarity == "Cathode"]
+
+# check MAG in cathode
+mags_in_cathode <- mags_with_all[sapply(mags_with_all, function(mag) {
+  any(coverage_matrix[cathode_samples, mag] > 0, na.rm = TRUE)
+})]
+
+# output
+mags_with_all <- mags_in_cathode  
+print(mags_with_all)
+
+# count
+cat("number of MAG：", length(mags_with_all), "\n")
