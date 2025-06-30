@@ -3,7 +3,7 @@
 A computational framework for simulating and analyzing **electrogenic microbial systems**, combining metabolic modeling, environmental sampling, functional annotation, and machine learning. This project supports a full workflow from data retrieval and model construction to simulation and downstream analysis.
 
 ---
-
+```
 ##  Project Structure
 .
 ├── content/                  # Documentation and project notes
@@ -18,4 +18,4 @@ A computational framework for simulating and analyzing **electrogenic microbial 
 ├── README.md                 # Project overview
 ├── pyproject.toml            # Project configuration (Poetry)
 └── poetry.lock               # Dependency lock file
-
+```
