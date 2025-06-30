@@ -182,7 +182,6 @@ pyrightconfig.json
 
 # 忽略 external 里的所有东西
 external/*
-
 # 但是保留 external/.gitkeep
 !external/.gitkeep
 
@@ -191,7 +190,8 @@ data/*
 # 保留 data/.gitkeep
 !data/.gitkeep
 
-document
-
 models/*
 !models/.gitkeep
+
+results/*
+!results/.gitkeep
