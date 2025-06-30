@@ -39,6 +39,32 @@ mag_ko_sub <- mag_ko_matrix[common_mags, ]
 # sample × MAG * MAG × KO → sample × KO
 sample_ko_matrix <- as.matrix(coverage_sub) %*% mag_ko_sub
 
+# ====================== anode/cathode dict ====================== 
+meta_df <- data.frame(
+  MAGLab_Name = c(
+    "R1J142A", "R2J142A", "R3J142A", "R4J147A", "R5J141A", "R6J143A",
+    "R4J147C", "R5J141C", "R6J143C",
+    "Sg1AJ36C", "Sg1BJ36C", "Sg1CJ36C",
+    "NSg1AJ41C", "NSg1BJ41C", "NSg1CJ41C"
+  ),
+  Compartment = c(
+    rep("Anode", 6),
+    rep("Cathode", 9)
+  ),
+  stringsAsFactors = FALSE
+)
+# build mag dict for anode/cathode
+sample_to_polarity <- setNames(meta_df$Compartment, meta_df$MAGLab_Name)
+build_mag_polarity_dict <- function(coverage_matrix) {
+  sapply(colnames(coverage_matrix), function(mag) {
+    samples_present <- rownames(coverage_matrix)[coverage_matrix[, mag] > 0]
+    polarities <- sample_to_polarity[samples_present]
+    polarities <- polarities[!is.na(polarities)]
+    if (length(polarities) == 0) return(NA)
+    return(names(which.max(table(polarities))))
+  })
+}
+
 # ====================== Heatmap  ======================
 top_kos <- names(sort(colMeans(sample_ko_matrix), decreasing = TRUE)[1:50])
 mat <- log1p(sample_ko_matrix[, top_kos])
@@ -85,7 +111,7 @@ electro_KOs <- c("K02652", "K02653", "K05912", "K05913", "K05914", "K00330", "K0
 
 electrogenic_mags <- ko_table %>%
   pivot_longer(-fasta, names_to = "KO", values_to = "count") %>%
-  filter(KO %in% electro_KOs & count > 0) %>%
+  filter(KO %in% electro_KOs & count > 1) %>%
   distinct(fasta)
 
 # ====================== Annotation classification  ======================
@@ -95,7 +121,11 @@ electro_taxa <- left_join(electrogenic_mags, tax, by = c("fasta" = "user_genome"
 print(electro_taxa)
 
 # ====================== Calculate Spearman competition correlation for Geobacter  ======================
+# anode sample
+anode_samples <- names(sample_to_polarity)[sample_to_polarity == "Anode"]
+
 electro_abund <- coverage_matrix[, electrogenic_mags$fasta, drop = FALSE]
+electro_abund <- electro_abund[anode_samples, , drop = FALSE]
 
 geo_id <- electro_taxa %>%
   filter(str_detect(genus, "Geobacter")) %>%
@@ -124,39 +154,13 @@ cor_df %>%
 
 # -------- Wood-Ljungdahl Pathway check--------
 woodljungdahl_core_kos <- c(
-  "K00198",  # formate dehydrogenase
-  "K00600",  # formyl-THF synthetase
-  "K00297",  # methylene-THF dehydrogenase
-  "K01491",  # methylene-THF reductase
-  "K00194",  # CO dehydrogenase
-  "K00197"   # acetyl-CoA synthase
+  "K00198",  # CO₂ → HCOOH
+  "K00600",  # HCOOH + THF → formyl-THF
+  "K00297",  # ormyl-THF → methylene-THF
+  "K01491",  # methylene-THF → methyl-THF
+  "K00194",  # CO₂ → CO
+  "K00197"   # CO + CH₃- + CoA → acetyl-CoA
 )
-
-# MAGLab_Name 
-meta_df <- data.frame(
-  MAGLab_Name = c(
-    "R1J142A", "R2J142A", "R3J142A", "R4J147A", "R5J141A", "R6J143A",
-    "R4J147C", "R5J141C", "R6J143C",
-    "Sg1AJ36C", "Sg1BJ36C", "Sg1CJ36C",
-    "NSg1AJ41C", "NSg1BJ41C", "NSg1CJ41C"
-  ),
-  Compartment = c(
-    rep("Anode", 6),
-    rep("Cathode", 9)
-  ),
-  stringsAsFactors = FALSE
-)
-# build mag dict for anode/cathode
-sample_to_polarity <- setNames(meta_df$Compartment, meta_df$MAGLab_Name)
-build_mag_polarity_dict <- function(coverage_matrix) {
-  sapply(colnames(coverage_matrix), function(mag) {
-    samples_present <- rownames(coverage_matrix)[coverage_matrix[, mag] > 0]
-    polarities <- sample_to_polarity[samples_present]
-    polarities <- polarities[!is.na(polarities)]
-    if (length(polarities) == 0) return(NA)
-    return(names(which.max(table(polarities))))
-  })
-}
 
 kos_present <- intersect(woodljungdahl_core_kos, colnames(mag_ko_matrix))
 mag_has_all <- rowSums(mag_ko_matrix[, kos_present, drop = FALSE] > 0) == length(kos_present)
