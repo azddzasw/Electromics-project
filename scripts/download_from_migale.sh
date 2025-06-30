@@ -15,7 +15,7 @@ for dir in "${DIRS[@]}"; do
     SRC="${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_BASE}/${dir}/"
     DST="${LOCAL_BASE}/${dir}/"
     echo "sync：$SRC → $DST"
-    rsync -avz --inplace --no-t --no-perms -e ssh "$SRC" "$DST"
+    rsync -avz --inplace --no-t --no-perms --delete -e ssh "$SRC" "$DST"
 
 done
 
