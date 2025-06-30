@@ -1,0 +1,16 @@
+Sample_Name_Sequences;Lab_Name;Reactor_type;Compartment;Community
+1;R1_J142_A ;H;Anode;Saline
+2;R2_J142_A;H;Anode;Saline
+3;R3_J142_A;H;Anode;Saline
+4;R4_J147_A;H;Anode;Non_saline
+5;R5_J141_A;H;Anode;Non_saline
+6;R6_J143_A;H;Anode;Non_saline
+7;R4_J147_C;H;Cathode;Non_saline
+8;R5_J141_C;H;Cathode;Non_saline
+9;R6_J143_C;H;Cathode;Non_saline
+10;Sg1_A_J36_C;Laborxing;Cathode;Saline
+11;Sg1_B_J36_C;Laborxing;Cathode;Saline
+12;Sg1_C_J36_C;Laborxing;Cathode;Saline
+13;NSg1_A_J41_C;Laborxing;Cathode;Non_saline
+14;NSg1_B_J41_C;Laborxing;Cathode;Non_saline
+15;NSg1_C_J41_C;Laborxing;Cathode;Non_saline

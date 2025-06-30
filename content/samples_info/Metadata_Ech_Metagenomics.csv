@@ -1,0 +1,16 @@
+Lab_Name;Reactor;Reactor_type;Sample_type;Compartment;Community;Mashup
+R1_J142_A;R1;H;Mix;Anode;Saline;Anode_Saline
+R2_J142_A;R2;H;Mix;Anode;Saline;Anode_Saline
+R3_J142_A;R3;H;Mix;Anode;Saline;Anode_Saline
+R4_J147_A;R4;H;Mix;Anode;Non_saline;Anode_Non_Saline
+R5_J141_A;R5;H;Mix;Anode;Non_saline;Anode_Non_Saline
+R6_J143_A;R6;H;Mix;Anode;Non_saline;Anode_Non_Saline
+R4_J147_C;R4;H;Mix;Cathode;Non_saline;Cathode_Non_Saline
+R5_J141_C;R5;H;Mix;Cathode;Non_saline;Cathode_Non_Saline
+R6_J143_C;R6;H;Mix;Cathode;Non_saline;Cathode_Non_Saline
+Sg1_A_J36_C;Sg1_A;Laborxing;Carbon_cloth;Cathode;Saline;Cathode_Saline
+Sg1_B_J36_C;Sg1_B;Laborxing;Carbon_cloth;Cathode;Saline;Cathode_Saline
+Sg1_C_J36_C;Sg1_C;Laborxing;Carbon_cloth;Cathode;Saline;Cathode_Saline
+NSg1_A_J41_C;NSg1_A;Laborxing;Carbon_cloth;Cathode;Non_saline;Cathode_Non_Saline
+NSg1_B_J41_C;NSg1_B;Laborxing;Carbon_cloth;Cathode;Non_saline;Cathode_Non_Saline
+NSg1_C_J41_C;NSg1_C;Laborxing;Carbon_cloth;Cathode;Non_saline;Cathode_Non_Saline

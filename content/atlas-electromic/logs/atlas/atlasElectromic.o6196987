@@ -1,0 +1,14 @@
+Decompressing...
+Decompressing...
+Decompressing...
+[32mDownloading "eggnog.db" at /work_home/cmidoux/atlas-databases/EggNOG_V5...[0m
+[36mcd /work_home/cmidoux/atlas-databases/EggNOG_V5 && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.db.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.db.gz && echo Decompressing... && gunzip eggnog.db.gz -f[0m
+[32mDownloading "eggnog.taxa.db" at /work_home/cmidoux/atlas-databases/EggNOG_V5...[0m
+[36mcd /work_home/cmidoux/atlas-databases/EggNOG_V5 && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog.taxa.tar.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz && echo Decompressing... && tar -zxf eggnog.taxa.tar.gz && rm eggnog.taxa.tar.gz[0m
+[32mDownloading fasta files " at /work_home/cmidoux/atlas-databases/EggNOG_V5...[0m
+[36mcd /work_home/cmidoux/atlas-databases/EggNOG_V5 && wget -nH --user-agent=Mozilla/5.0 --relative --no-parent --reject "index.html*" --cut-dirs=4 -e robots=off -O eggnog_proteins.dmnd.gz http://eggnogdb.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz && echo Decompressing... && gunzip eggnog_proteins.dmnd.gz -f[0m
+[1;34mSkipping novel families diamond and annotation databases (or already present). Use -F and -f to force download[0m
+[1;34mSkipping Pfam database (or already present). Use -P and -f to force download[0m
+[1;34mSkipping MMseqs2 database (or already present). Use -M and -f to force download[0m
+[1;34mNo HMMER database requested. Use "-H -d taxid" to download the hmmer database for taxid[0m
+[32mFinished.[0m

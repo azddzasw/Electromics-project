@@ -1,0 +1,16 @@
+	Reads_raw_R1	Reads_raw_R2	BinGroup	Reads_QC_R1	Reads_QC_R2	Assembly
+NSg1AJ41C	/save_projet/electromic/goodData/NSg1AJ41C_1.fastq.gz	/save_projet/electromic/goodData/NSg1AJ41C_2.fastq.gz	LCN	QC/reads/NSg1AJ41C_R1.fastq.gz	QC/reads/NSg1AJ41C_R2.fastq.gz	Assembly/fasta/NSg1AJ41C.fasta
+NSg1BJ41C	/save_projet/electromic/goodData/NSg1BJ41C_1.fastq.gz	/save_projet/electromic/goodData/NSg1BJ41C_2.fastq.gz	LCN	QC/reads/NSg1BJ41C_R1.fastq.gz	QC/reads/NSg1BJ41C_R2.fastq.gz	Assembly/fasta/NSg1BJ41C.fasta
+NSg1CJ41C	/save_projet/electromic/goodData/NSg1CJ41C_1.fastq.gz	/save_projet/electromic/goodData/NSg1CJ41C_2.fastq.gz	LCN	QC/reads/NSg1CJ41C_R1.fastq.gz	QC/reads/NSg1CJ41C_R2.fastq.gz	Assembly/fasta/NSg1CJ41C.fasta
+R1J142A	/save_projet/electromic/goodData/R1J142A_1.fastq.gz	/save_projet/electromic/goodData/R1J142A_2.fastq.gz	HAS	QC/reads/R1J142A_R1.fastq.gz	QC/reads/R1J142A_R2.fastq.gz	Assembly/fasta/R1J142A.fasta
+R2J142A	/save_projet/electromic/goodData/R2J142A_1.fastq.gz	/save_projet/electromic/goodData/R2J142A_2.fastq.gz	HAS	QC/reads/R2J142A_R1.fastq.gz	QC/reads/R2J142A_R2.fastq.gz	Assembly/fasta/R2J142A.fasta
+R3J142A	/save_projet/electromic/goodData/R3J142A_1.fastq.gz	/save_projet/electromic/goodData/R3J142A_2.fastq.gz	HAS	QC/reads/R3J142A_R1.fastq.gz	QC/reads/R3J142A_R2.fastq.gz	Assembly/fasta/R3J142A.fasta
+R4J147A	/save_projet/electromic/goodData/R4J147A_1.fastq.gz	/save_projet/electromic/goodData/R4J147A_2.fastq.gz	HAN	QC/reads/R4J147A_R1.fastq.gz	QC/reads/R4J147A_R2.fastq.gz	Assembly/fasta/R4J147A.fasta
+R4J147C	/save_projet/electromic/goodData/R4J147C_1.fastq.gz	/save_projet/electromic/goodData/R4J147C_2.fastq.gz	HCN	QC/reads/R4J147C_R1.fastq.gz	QC/reads/R4J147C_R2.fastq.gz	Assembly/fasta/R4J147C.fasta
+R5J141A	/save_projet/electromic/goodData/R5J141A_1.fastq.gz	/save_projet/electromic/goodData/R5J141A_2.fastq.gz	HAN	QC/reads/R5J141A_R1.fastq.gz	QC/reads/R5J141A_R2.fastq.gz	Assembly/fasta/R5J141A.fasta
+R5J141C	/save_projet/electromic/goodData/R5J141C_1.fastq.gz	/save_projet/electromic/goodData/R5J141C_2.fastq.gz	HCN	QC/reads/R5J141C_R1.fastq.gz	QC/reads/R5J141C_R2.fastq.gz	Assembly/fasta/R5J141C.fasta
+R6J143A	/save_projet/electromic/goodData/R6J143A_1.fastq.gz	/save_projet/electromic/goodData/R6J143A_2.fastq.gz	HAN	QC/reads/R6J143A_R1.fastq.gz	QC/reads/R6J143A_R2.fastq.gz	Assembly/fasta/R6J143A.fasta
+R6J143C	/save_projet/electromic/goodData/R6J143C_1.fastq.gz	/save_projet/electromic/goodData/R6J143C_2.fastq.gz	HCN	QC/reads/R6J143C_R1.fastq.gz	QC/reads/R6J143C_R2.fastq.gz	Assembly/fasta/R6J143C.fasta
+Sg1AJ36C	/save_projet/electromic/goodData/Sg1AJ36C_1.fastq.gz	/save_projet/electromic/goodData/Sg1AJ36C_2.fastq.gz	LCS	QC/reads/Sg1AJ36C_R1.fastq.gz	QC/reads/Sg1AJ36C_R2.fastq.gz	Assembly/fasta/Sg1AJ36C.fasta
+Sg1BJ36C	/save_projet/electromic/goodData/Sg1BJ36C_1.fastq.gz	/save_projet/electromic/goodData/Sg1BJ36C_2.fastq.gz	LCS	QC/reads/Sg1BJ36C_R1.fastq.gz	QC/reads/Sg1BJ36C_R2.fastq.gz	Assembly/fasta/Sg1BJ36C.fasta
+Sg1CJ36C	/save_projet/electromic/goodData/Sg1CJ36C_1.fastq.gz	/save_projet/electromic/goodData/Sg1CJ36C_2.fastq.gz	LCS	QC/reads/Sg1CJ36C_R1.fastq.gz	QC/reads/Sg1CJ36C_R2.fastq.gz	Assembly/fasta/Sg1CJ36C.fasta
