@@ -1,10 +1,12 @@
 #!/bin/bash
+LOCAL_BASE="$(cd "$(dirname "$0")/.." && pwd)"
+echo "LOCAL_BASE = $LOCAL_BASE"
 
 # 通用配置
 REMOTE_USER=swenbo
 REMOTE_HOST=front.migale.inrae.fr
 REMOTE_BASE=/home/swenbo/work/Electromics-project
-LOCAL_BASE=~/Electromics-project
+#LOCAL_BASE=~/Electromics-project
 
 # 子目录
 DIRS=("data" "results" "models")
