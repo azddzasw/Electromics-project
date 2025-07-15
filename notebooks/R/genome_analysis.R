@@ -8,15 +8,14 @@ library(ggplot2)
 
 # ====================== read data ======================
 # Coverage Matrix
-parquet_path <- "data/median_coverage_genomes.parquet"
+parquet_path <- "data/genome/median_coverage_genomes.parquet"
 coverage_df <- read_parquet(parquet_path)
-
 coverage_matrix <- coverage_df %>%
   column_to_rownames("index") %>%
   as.matrix()
 
 # read annotation
-anno <- read.delim("data/annotations.tsv", sep = "\t", header = TRUE)
+anno <- read.delim("data/class_anno/annotations.tsv", sep = "\t", header = TRUE)
 
 # ====================== build KO × MAG matrix ======================
 ko_table <- anno %>%
@@ -115,18 +114,14 @@ electrogenic_mags <- ko_table %>%
   distinct(fasta)
 
 # ====================== Annotation classification  ======================
-tax <- read.delim("data/gtdb_taxonomy.tsv", sep = "\t")
-electro_taxa <- left_join(electrogenic_mags, tax, by = c("fasta" = "user_genome"))
-
+tax <- read.delim("data/class_anno/gtdb_taxonomy.tsv", sep = "\t")
+#electro_taxa <- left_join(electrogenic_mags, tax, by = c("fasta" = "user_genome"))
+electro_taxa <- left_join(electrogenic_mags, tax, by = c("fasta" = "user_genome")) %>%
+  mutate(genus = ifelse(is.na(genus) | genus == "", "None", genus))
 print(electro_taxa)
 
 # ====================== Calculate Spearman competition correlation for Geobacter  ======================
-# anode sample
-anode_samples <- names(sample_to_polarity)[sample_to_polarity == "Anode"]
-
 electro_abund <- coverage_matrix[, electrogenic_mags$fasta, drop = FALSE]
-electro_abund <- electro_abund[anode_samples, , drop = FALSE]
-
 geo_id <- electro_taxa %>%
   filter(str_detect(genus, "Geobacter")) %>%
   pull(fasta)
@@ -140,16 +135,31 @@ if (length(geo_id) > 0) {
 
   print(cor_df)
 }
+# select anode sample
+mag_polarity <- build_mag_polarity_dict(coverage_matrix)
+
+# select data
+cor_df <- data.frame(MAG = names(cor_res), Spearman = cor_res) %>%
+  left_join(tax, by = c("MAG" = "user_genome")) %>%
+  filter(MAG != geo_id[1]) %>%                          
+  mutate(Polarity = mag_polarity[MAG]) %>%
+  #filter(Polarity != "Cathode") %>%
+  filter(Spearman >= 0) %>% ########filter########                        
+  mutate(Genus = ifelse(is.na(genus), "Unknown", genus)) %>%
+  arrange(Spearman)
+ 
+
+
 # ====================== plot  ======================
 cor_df %>%
-  mutate(Genus = ifelse(is.na(genus), "Unknown", genus)) %>%
+  mutate(Genus = ifelse(is.na(genus) | genus == "", "Unknown", genus)) %>%
   top_n(-10, Spearman) %>%
   ggplot(aes(x = reorder(MAG, Spearman), y = Spearman, fill = Genus)) +
   geom_bar(stat = "identity") +
   coord_flip() +
   theme_minimal() +
-  labs(title = "Top negatively  MAGs",
-       y = "Spearman correlation", x = "MAG ID")
+  labs(title = "Positively related MAGs",
+       y = "Spearman correlation", x = "MAG ID", fill = "Genus")
 
 
 # -------- Wood-Ljungdahl Pathway check--------
@@ -165,6 +175,9 @@ woodljungdahl_core_kos <- c(
 kos_present <- intersect(woodljungdahl_core_kos, colnames(mag_ko_matrix))
 mag_has_all <- rowSums(mag_ko_matrix[, kos_present, drop = FALSE] > 0) == length(kos_present)
 mags_with_all <- rownames(mag_ko_matrix)[mag_has_all]
+# at least one reaction
+mag_has_any <- rowSums(mag_ko_matrix[, kos_present, drop = FALSE] > 0) >= 1
+mags_with_any <- rownames(mag_ko_matrix)[mag_has_any]
 
 # Get all cathode sample names
 cathode_samples <- names(sample_to_polarity)[sample_to_polarity == "Cathode"]
@@ -180,3 +193,8 @@ print(mags_with_all)
 
 # count
 cat("number of MAG：", length(mags_with_all), "\n")
+
+#output at least one
+mags_with_any <- mags_in_cathode
+print(mags_with_any)
+cat("Number of MAGs with at least 1 WLP KO in cathode:", length(mags_with_any), "\n")
