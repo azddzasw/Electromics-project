@@ -19,3 +19,41 @@ A computational framework for simulating and analyzing **electrogenic microbial 
 ├── pyproject.toml            # Project configuration (Poetry)
 └── poetry.lock               # Dependency lock file
 ```
+---
+
+## 🧪 Features
+
+- ⚙️ **Genome-scale metabolic modeling** with thermodynamic constraints
+- 🔄 **Environmental simulation** across 1000+ random media using ball sampling
+- 🤖 **Neural network models** to predict biomass or metabolite flux
+- 🧬 **Functional profiling** of electrogenic and homoacetogenic populations
+- 🧯 **Biofilm and EPS analysis** for anode/cathode community dynamics
+- 📊 **Visualization-ready outputs** for plotting with seaborn, matplotlib, or R
+
+---
+
+## Getting Started (with Poetry)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/azddzasw/Electromics-project.git
+cd Electromics-project
+```
+
+### 2. Set up the environment using Poetry
+Install Poetry (if not yet installed):
+```
+bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+Install dependencies and activate the virtual environment:
+```
+bash
+poetry install
+poetry shell
+```
+Poetry will automatically install all dependencies specified in pyproject.toml.
+
+
